@@ -4,7 +4,7 @@
 ###
 
 name: download-ftp
-description: "Downloads data over FTP"
+description: "Downloads a fixed-width text file over FTP"
 maintainers:
   - Peter Henderson <name@domain.com>
 version: "1.0.0"
