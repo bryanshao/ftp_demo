@@ -1,0 +1,16 @@
+###
+# Parsefile for download-ftp
+# 2017-08-29
+###
+
+name: download-ftp
+description: "Downloads data over FTP"
+maintainers:
+  - Peter Henderson <name@domain.com>
+version: "1.0.0"
+license: none
+source_urls:
+  - "http://example.org/example.csv"
+
+extract:
+  - data.yaml

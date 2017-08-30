@@ -1,0 +1,8 @@
+extract:
+  - step: Fetch list of all weather stations
+    action: extract.source.ftp.DownloadFiles
+    host: ftp.ncdc.noaa.gov
+    user: anonymous
+    password:
+    fetch:
+      - "/pub/data/ghcn/daily/ghcnd-inventory.txt"
