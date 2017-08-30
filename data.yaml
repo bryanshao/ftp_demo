@@ -6,3 +6,41 @@ extract:
     password:
     fetch:
       - "/pub/data/ghcn/daily/ghcnd-inventory.txt"
+
+  - step: Extract individual records based on provider's schema
+    action: extract.formats.fixed_width.ReadRecords
+    field_lengths:
+      - 11
+      - s1
+      - 8
+      - s1
+      - 9
+      - s1
+      - 4
+      - s1
+      - 4
+      - s1
+      - 4
+      - s1
+
+transform:
+  - step: Set schema for output table
+    action: transform.schema.SetSchema
+    fields:
+      - name: ID
+        type: string
+      - name: LATITUDE
+        type: decimal
+      - name: LONGITUDE
+        type: decimal
+      - name: ELEMENT
+        type: string
+      - name: FIRSTYEAR
+        type: integer
+      - name: LASTYEAR
+        type: integer
+
+load:
+  - step: Output to local CSV file
+    action: load.OutputCSV
+    repository: .
