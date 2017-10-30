@@ -1,7 +1,3 @@
-dependencies:
-    "lib.set_datapath": "dp"
-    "output_adapters.output_river": "output_river"
-
 extract:
   - step: Fetch list of all weather stations
     action: extract.source.ftp.DownloadFiles
@@ -44,10 +40,11 @@ transform:
       - name: LASTYEAR
         type: integer
 
-  - step: Set the table datapath
-    action: dp.SetDatapath
-    datapath: concourse.demo.ftp
-
 load:
-  - step: Send data to River
-    action: output_river.OutputRiver
+  - step: Send to Assembly
+    action: load.OutputAbstract
+    trusted: yes
+    db_boundary: concourse.demo
+    table_key: concourse.demo.ftp
+    repository: '{ context.repository }'
+    credentials: '{ context.credentials }'
