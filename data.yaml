@@ -1,3 +1,6 @@
+dependencies:
+    "lib.set_datapath": "dp"
+
 extract:
   - step: Fetch list of all weather stations
     action: extract.source.ftp.DownloadFiles
@@ -40,7 +43,10 @@ transform:
       - name: LASTYEAR
         type: integer
 
+  - step: Set the table datapath
+    action: dp.SetDatapath
+    datapath: concourse.demo.ftp
+
 load:
-  - step: Output to local CSV file
-    action: load.OutputCSV
-    repository: .
+  - step: Send data to River
+    action: output_river.OutputRiver
