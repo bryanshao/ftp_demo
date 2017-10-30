@@ -1,6 +1,6 @@
 import os
 
-from parsekit.steps.output import OutputCSV
+from parsekit.steps.load import OutputCSV
 from parsekit.errors import ParseDefinitionError
 
 from river import RiverClient
