@@ -41,10 +41,13 @@ transform:
         type: integer
 
 load:
+  - step: Set the datapath
+    action: load.SetTableName
+    table_name: concourse.demo.ftp
+
   - step: Send to Assembly
     action: load.OutputAbstract
     trusted: yes
     db_boundary: concourse.demo
-    table_key: concourse.demo.ftp
     repository: '{ context.repository }'
     credentials: '{ context.credentials }'
